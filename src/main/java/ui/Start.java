@@ -7,8 +7,11 @@ public class Start {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				LoginWindow addressFormWindow = new LoginWindow();
-				addressFormWindow.setVisible(true);
+				if (!LoginWindow.INSTANCE.isInitialized()) {
+					LoginWindow addressFormWindow = LoginWindow.INSTANCE;
+					addressFormWindow.setVisible(true);
+				}
+
 			}
 		});
 	}

@@ -14,7 +14,23 @@ import java.util.Arrays;
 
 public class LoginWindow extends JFrame {
 
-    public LoginWindow () {
+    public static final LoginWindow INSTANCE = new LoginWindow();
+
+    private boolean isInitialized = false;
+
+    public boolean isInitialized() {
+        return isInitialized;
+    }
+    public void isInitialized(boolean val) {
+        isInitialized = val;
+    }
+
+    private JTextArea messageBar = new JTextArea();
+    public void clear() {
+        messageBar.setText("");
+    }
+
+    private LoginWindow () {
         windowInitializer();
         mainPanel();
     }
@@ -73,16 +89,15 @@ public class LoginWindow extends JFrame {
         layout.putConstraint(SpringLayout.WEST, backBtn, hPadding - 8, SpringLayout.WEST, panel);
         layout.putConstraint(SpringLayout.NORTH, backBtn, 16, SpringLayout.SOUTH, passwordLabel);
 
-        JTextArea messageLabel = new JTextArea();
-        messageLabel.setEditable(false);
-        messageLabel.setLineWrap(true);
-        messageLabel.setOpaque(false);
-        messageLabel.setBorder(BorderFactory.createEmptyBorder());
-        messageLabel.setForeground(Color.RED);
-        panel.add(messageLabel);
-        layout.putConstraint(SpringLayout.WEST, messageLabel, 0, SpringLayout.WEST, passwordLabel);
-        layout.putConstraint(SpringLayout.EAST, messageLabel, 0, SpringLayout.EAST, passwordField);
-        layout.putConstraint(SpringLayout.NORTH, messageLabel, 12, SpringLayout.SOUTH, loginButton);
+        messageBar.setEditable(false);
+        messageBar.setLineWrap(true);
+        messageBar.setOpaque(false);
+        messageBar.setBorder(BorderFactory.createEmptyBorder());
+        messageBar.setForeground(Color.RED);
+        panel.add(messageBar);
+        layout.putConstraint(SpringLayout.WEST, messageBar, 0, SpringLayout.WEST, passwordLabel);
+        layout.putConstraint(SpringLayout.EAST, messageBar, 0, SpringLayout.EAST, passwordField);
+        layout.putConstraint(SpringLayout.NORTH, messageBar, 12, SpringLayout.SOUTH, loginButton);
 
         backBtn.addActionListener(new ActionListener() {
             @Override
@@ -110,18 +125,25 @@ public class LoginWindow extends JFrame {
                         userHolder.setUser(loggedInUser);
 
                         errorMessage = "Success";
-                        messageLabel.setForeground(Color.GREEN);
+                        messageBar.setForeground(Color.GREEN);
 
 //                        Start.hideAllWindows();
-//                        if(!MainMenuWindow.INSTANCE.isInitialized()) {
-//                            MainMenuWindow.INSTANCE.init();
-//                        }
-//                        MainMenuWindow.INSTANCE.show();
+
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                if(!MainMenuWindow.INSTANCE.isInitialized()) {
+                                    MainMenuWindow.INSTANCE.init();
+                                    MainMenuWindow mainMenuWindow = MainMenuWindow.INSTANCE;
+                                    mainMenuWindow.setVisible(true);
+                                }
+                            }
+                        });
                     }
-                    messageLabel.setText(errorMessage);
+                    messageBar.setText(errorMessage);
 
                 } catch(LoginException ex) {
-                    messageLabel.setText(ex.getMessage());
+                    messageBar.setText(ex.getMessage());
                 }
             }
         });

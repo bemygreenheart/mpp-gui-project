@@ -1,0 +1,71 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.8" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) {
+			"hgap": 8
+			"vgap": 8
+		} ) {
+			name: "this"
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel4"
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "button1"
+					"text": "Checkout book"
+					auxiliary() {
+						"JavaCodeGenerator.variableName": "checkoutButton"
+					}
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Last"
+			} )
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Checkout book"
+				"horizontalAlignment": 0
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "First"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel5"
+				"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"maximumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel3"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Member ID: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField2"
+						"columns": 20
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "memberIDTextField"
+						}
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel2"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "Book ISBN: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "textField1"
+						"columns": 20
+						auxiliary() {
+							"JavaCodeGenerator.variableName": "isbnTextField"
+						}
+					} )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 400, 300 )
+		} )
+	}
+}

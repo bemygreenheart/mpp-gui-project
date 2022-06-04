@@ -1,0 +1,138 @@
+JFDML JFormDesigner: "7.0.2.6.321" Java: "11.0.8" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			add( new FormComponent( "javax.swing.JLabel" ) {
+				name: "label1"
+				"text": "Add author"
+				"horizontalAlignment": 0
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "First"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel21"
+				"border": new javax.swing.border.EmptyBorder( 5, 5, 5, 5 )
+				add( new FormComponent( "javax.swing.JButton" ) {
+					name: "addAuthorBtn"
+					"text": "Add Author"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Last"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+				name: "panel11"
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel12"
+					"maximumSize": new java.awt.Dimension( 50, 40 )
+					"minimumSize": new java.awt.Dimension( 50, 40 )
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"autoscrolls": true
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "First name: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "firstNameTextField"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel13"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "Last Name: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "lastNameText"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel14"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "Phone number: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "phoneNumberText"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel15"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "City: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "cityText"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel16"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "State: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "stateText"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel17"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label7"
+						"text": "Zip: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "zipText"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel18"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label8"
+						"text": "Street: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "streetText"
+						"columns": 10
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+					name: "panel19"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label9"
+						"text": "Short Credentials: "
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "credText"
+						"columns": 10
+					} )
+					add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.FlowLayout ) ) {
+						name: "panel20"
+						add( new FormComponent( "javax.swing.JLabel" ) {
+							name: "label10"
+							"text": "Short Bio: "
+						} )
+						add( new FormComponent( "javax.swing.JTextField" ) {
+							name: "shortBioText"
+							"columns": 10
+						} )
+					} )
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 0, 0 )
+			"size": new java.awt.Dimension( 685, 335 )
+		} )
+	}
+}

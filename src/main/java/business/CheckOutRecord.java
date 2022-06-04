@@ -1,4 +1,4 @@
-package Entity;
+package business;
 
 import java.util.ArrayList;
 import java.util.List;

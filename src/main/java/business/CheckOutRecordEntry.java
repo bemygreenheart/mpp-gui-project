@@ -1,4 +1,4 @@
-package Entity;
+package business;
 
 import java.time.LocalDate;
 

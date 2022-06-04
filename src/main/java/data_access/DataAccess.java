@@ -1,9 +1,8 @@
-package DataAccess;
+package data_access;
 
-import Entity.*;
+import business.*;
 
 import java.util.List;
-
 public interface DataAccess {
 	
 	public void saveNewMember(LibraryMember libraryMember);
@@ -14,7 +13,7 @@ public interface DataAccess {
 	public int getMaximumCheckoutLength(String isbn);
 	public BookCopy nextAvailableBookCopy(String isbn );
 	public void saveMemberCheckoutRecord(String memberId, CheckOutRecordEntry entry);
-	public Role verifyUser(int id, String password);
+	public AuthType verifyUser(String id, String password);
 	public List<CheckOutRecordEntry> getCheckOutRecord(String memberId);
 
 }

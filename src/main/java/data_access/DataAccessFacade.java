@@ -1,6 +1,6 @@
-package DataAccess;
+package data_access;
 
-import Entity.*;
+import business.*;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ public class DataAccessFacade implements DataAccess {
 	PersistenceData persistentData = new PersistenceData();
 
 	@Override
-	public Role verifyUser(int id, String password) {
+	public AuthType verifyUser(String id, String password) {
 		for (User user: persistentData.getUsers()) {
-			if (user.login(id, password)) return user.getRole();
+			if (user.login(id, password)) return user.getAuthType();
 		}
 		return null;
 	}
@@ -80,7 +80,7 @@ public class DataAccessFacade implements DataAccess {
 		for(Book book : persistentData.getBooks()) {
 			
 			if(book.getIsbn().equals(isbn)) {
-				return book.getMaxCheckOutLength();
+				return book.getMaxCheckoutLength();
 				
 			}
 		}
@@ -96,8 +96,8 @@ public class DataAccessFacade implements DataAccess {
 			
 			if(book.getIsbn().equals(isbn)) {
 				
-				for(BookCopy bCopy: book.getBookCopyList()) {
-					if(bCopy.getAvailability()) {
+				for(BookCopy bCopy: book.getCopies()) {
+					if(bCopy.isAvailable()) {
 						return bCopy;
 					}
 				}

@@ -4,8 +4,8 @@
 
 package ui;
 
-import Contoller.SystemController;
-import Entity.CheckOutRecordEntry;
+import business.SystemController;
+import business.CheckOutRecordEntry;
 
 import javax.swing.*;
 import java.awt.*;

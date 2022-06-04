@@ -1,12 +1,8 @@
-/*
- * Created by JFormDesigner on Wed Oct 07 11:16:37 CDT 2020
- */
-
 package ui;
 
-import Contoller.SystemController;
-import Entity.Address;
-import Entity.Author;
+import business.SystemController;
+import business.Address;
+import business.Author;
 
 import javax.swing.*;
 import java.awt.*;
@@ -222,7 +218,7 @@ public class AddAuthorUIForm extends JFrame {
                 String state = stateText.getText();
                 String city = cityText.getText();
                 String street = streetText.getText();
-                int zip = Integer.parseInt(zipText.getText());
+                String zip = zipText.getText();
                 Address address = new Address(state, city, street, zip);
                 String lastName = lastNameText.getText();
                 String phoneNumber = phoneNumberText.getText();
@@ -239,12 +235,7 @@ public class AddAuthorUIForm extends JFrame {
                         cred.isEmpty() &&
                         shortBio.isEmpty()
                 )) {
-                    Author author = new Author(firstName,
-                            lastName,
-                            phoneNumber,
-                            address,
-                            cred,
-                            shortBio);
+                    Author author = new Author(firstName, lastName, phoneNumber, new Address(street, city, state, zip), shortBio);
                     SystemController.getInstance().addAuthors(author);
                     setVisible(false);
                     dispose();

@@ -4,8 +4,8 @@
 
 package ui;
 
-import Contoller.SystemController;
-import Entity.Author;
+import business.SystemController;
+import business.Author;
 
 import javax.swing.*;
 import java.awt.*;

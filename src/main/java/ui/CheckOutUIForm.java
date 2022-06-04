@@ -4,7 +4,7 @@
 
 package ui;
 
-import Contoller.SystemController;
+import business.SystemController;
 
 import javax.swing.*;
 import java.awt.*;

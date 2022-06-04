@@ -1,9 +1,9 @@
 package ui;
 
-import Entity.Author;
-import Entity.Book;
-import Entity.BookCopy;
-import Entity.CheckOutRecordEntry;
+import business.Author;
+import business.Book;
+import business.BookCopy;
+import business.CheckOutRecordEntry;
 
 import javax.swing.table.AbstractTableModel;
 import java.util.List;
@@ -44,7 +44,7 @@ public class TableModel extends AbstractTableModel {
         } else if (columnIndex == 1) {
             return authors;
         } else if (columnIndex == 2) {
-            return bookCopy.getCopyNumber();
+            return bookCopy.getCopyNum();
         } else if (columnIndex == 3) {
             return checkOutRecordEntry.getDateofCheckout();
         } else {

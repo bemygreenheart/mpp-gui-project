@@ -1,21 +1,20 @@
 package ui;
 
 
-import Contoller.SystemController;
-import Entity.Role;
+import business.AuthType;
+import business.SystemController;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class LoginUI extends JFrame {
-
+public class LoginWindow extends JFrame {
     JPanel mainPanel;
-    JButton submit;
+    JButton loginButton;
     JTextField passwordField, idField;
 
-    public LoginUI() {
-        setTitle("Welcome");
-        setSize(400, 400);
+    public LoginWindow() {
+        setTitle("Library Management System");
+        setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         setSize(GuiControl.SCREEN_WIDTH, GuiControl.SCREEN_HEIGHT);
@@ -27,7 +26,7 @@ public class LoginUI extends JFrame {
         //Welcome
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        JLabel welcomeLabel = new JLabel("Welcome");
+        JLabel welcomeLabel = new JLabel("Login");
         topPanel.add(welcomeLabel);
 
         //id and password
@@ -50,8 +49,8 @@ public class LoginUI extends JFrame {
 
         //Button
         JPanel bottomPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
-        submit = new JButton("Submit");
-        bottomPanel.add(submit);
+        loginButton = new JButton("Login");
+        bottomPanel.add(loginButton);
 
         mainPanel.add(topPanel, BorderLayout.NORTH);
         mainPanel.add(middlePanel, BorderLayout.CENTER);
@@ -62,14 +61,13 @@ public class LoginUI extends JFrame {
     }
 
     void handle() {
-        submit.addActionListener(e -> {
+        loginButton.addActionListener(e -> {
             String password = passwordField.getText();
             String id = idField.getText();
-            int integerId;
             try {
-                integerId = Integer.parseInt(id);
                 if (!(password.isEmpty() && id.isEmpty()))
-                    SystemController.getInstance().login(integerId, password, LoginUI.this);
+                    SystemController.getInstance().login(id, password, LoginWindow.this);
+
             } catch (NumberFormatException err) {
                 JOptionPane.showMessageDialog(this, "Invalid id");
             }
@@ -77,8 +75,8 @@ public class LoginUI extends JFrame {
     }
 
 
-    public void displayUI(Role role) {
-        MainView mainView = new MainView(role);
+    public void displayUI(AuthType authType) {
+        MainView mainView = new MainView(authType);
         mainView.setVisible(true);
     }
     public void displayLoginError() {

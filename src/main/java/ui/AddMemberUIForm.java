@@ -4,7 +4,7 @@
 
 package ui;
 
-import Contoller.SystemController;
+import business.SystemController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -215,7 +215,7 @@ public class AddMemberUIForm extends JFrame {
                         stateText,
                         streetText,
                         cityText,
-                        Integer.parseInt(zipText));
+                        zipText);
                 JOptionPane.showMessageDialog(AddMemberUIForm.this, "Member id added");
             } else JOptionPane.showMessageDialog(AddMemberUIForm.this, "Enter all credentials");
         });

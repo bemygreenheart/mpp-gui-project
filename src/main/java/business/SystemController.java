@@ -1,20 +1,18 @@
-package Contoller;
+package business;
 
-import DataAccess.DataAccess;
-import DataAccess.DataAccessFacade;
-import Entity.*;
+import data_access.DataAccess;
+import data_access.DataAccessFacade;
 import ui.AddBookCopyUIForm;
 import ui.CheckOutUIForm;
 import ui.CheckoutRecordPrintUI;
-import ui.LoginUI;
+import ui.LoginWindow;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class SystemController {
-
-    private static SystemController instance;
+    private static final SystemController INSTANCE =  new SystemController();
     private DataAccess dataAccess = new DataAccessFacade();
     private List<Author> authorsList;
 
@@ -22,12 +20,11 @@ public class SystemController {
     }
 
     public static SystemController getInstance() {
-        if (instance == null) instance = new SystemController();
-        return instance;
+        return INSTANCE;
     }
 
     public void addMember(String memberNo, String firstName, String lastName, String phoneNumber,
-                          String state, String city, String street, int zip) {
+                          String state, String city, String street, String zip) {
 
         Address address = addAddress(state, city, street, zip);
         LibraryMember libraryMember = new LibraryMember(memberNo, firstName, lastName, phoneNumber, address);
@@ -55,7 +52,7 @@ public class SystemController {
                 LocalDate dueDate = todaysDate.plusDays(checkOutLength);
 
                 CheckOutRecordEntry checkoutRecordEntry = new CheckOutRecordEntry(todaysDate, dueDate, availableBookCopy);
-                availableBookCopy.setAvailability(false);
+                availableBookCopy.changeAvailability();
 
                 dataAccess.saveMemberCheckoutRecord(memberId, checkoutRecordEntry);
                 checkOutUIForm.displayCheckoutSuccess();
@@ -76,10 +73,10 @@ public class SystemController {
 
         Book book = dataAccess.searchBook(isbn);
         if (book != null) {
+            BookCopy bookCopy = new BookCopy(null, copyNumber);
 
-            BookCopy bookCopy = new BookCopy(copyNumber);
-
-            book.addBookCopy(bookCopy);
+//            book.addBookCopy(bookCopy);
+            book.addCopy();
             dataAccess.saveNewBookCopy(bookCopy);
             bookCopyUIForm.displayBookAddedUI();
 
@@ -126,16 +123,16 @@ public class SystemController {
         authorsList.add(author);
     }
 
-    public void login(int id, String password, LoginUI loginUI) {
-        Role role = dataAccess.verifyUser(id, password);
-        if (role == null)
-            loginUI.displayLoginError();
+    public void login(String id, String password, LoginWindow loginWindow) {
+        AuthType authType = dataAccess.verifyUser(id, password);
+        if (authType == null)
+            loginWindow.displayLoginError();
         else {
-            loginUI.displayUI(role);
+            loginWindow.displayUI(authType);
         }
     }
 
-    private Address addAddress(String state, String city, String street, int zip) {
+    private Address addAddress(String state, String city, String street, String zip) {
         return new Address(state, city, street, zip);
     }
 }

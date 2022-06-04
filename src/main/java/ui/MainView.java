@@ -1,6 +1,6 @@
 package ui;
 
-import Entity.Role;
+import business.AuthType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,16 +8,16 @@ import java.awt.*;
 public class MainView extends JFrame {
 
     private JButton addBook, addMember, checkOutBook, addBookCopy, printCheckoutRecord;
-    private Role role;
+    private AuthType authType;
 
-    MainView(Role role) {
+    MainView(AuthType authType) {
         JPanel mainPanel = new JPanel(new FlowLayout());
         addBook = new JButton("Add Book");
         addBookCopy = new JButton("Add Book Copy");
         addMember = new JButton("Add member");
         checkOutBook = new JButton("Checkout book");
         printCheckoutRecord = new JButton("Print checkout record");
-        this.role = role;
+        this.authType = authType;
 
         setInsets(addBook, addMember, checkOutBook, addBookCopy, printCheckoutRecord);
         mainPanel.add(addBook);
@@ -26,7 +26,7 @@ public class MainView extends JFrame {
         mainPanel.add(checkOutBook);
         mainPanel.add(printCheckoutRecord);
 
-        switch (role) {
+        switch (authType) {
             case LIBRARIAN: {
                 addMember.setVisible(false);
                 addBook.setVisible(false);
